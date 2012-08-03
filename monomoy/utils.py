@@ -8,6 +8,21 @@ import datetime
 from bson.objectid import ObjectId
 
 
+def combine_array(obj):
+    if obj == []:
+        yield obj  # base-case
+        return
+
+    for choice in combine_array(obj[1:]):
+        for my in obj[0]:
+            yield choice + [my]  # append to the yielded array and append
+
+    # dear christ this is black magic. This is what I get for having
+    # an idea on the MBTA. Don't ask me to explain this, but it
+    # recursively yields all combos back.
+    #
+    # Screw best practice, eh?
+
 def parse_debcontrol(fil):
     payload = {}
     key = None

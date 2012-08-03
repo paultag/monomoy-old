@@ -10,11 +10,12 @@
         ],
         [
             "precise",
-            "unstable"
+            "unstable",
+            "testing"
         ]
     ],
-    "incoming": "/home/tag/incoming",
-    "pool": "/home/tag/pool",
     "build_expired_time": 7200,
-    "builder_timeout": 3600
+    "builder_timeout": 3600,
+    "incoming": "/home/tag/incoming",
+    "pool": "/home/tag/pool"
 }
