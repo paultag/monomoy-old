@@ -3,11 +3,14 @@
 # conditions of the Expat license.
 
 import sys
-from monomoy.queue import close_job
+import json
 from bson.objectid import ObjectId
+from monomoy.queue import close_job
+from monomoy.utils import JSONEncoder
 
 if len(sys.argv) < 3:
     print "Need ID"
     sys.exit(1)
 
-print close_job(ObjectId(sys.argv[2]))
+print close_job(ObjectId(sys.argv[2]),
+               cls=JSONEncoder)

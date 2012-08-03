@@ -5,10 +5,13 @@
 import json
 import sys
 
-from monomoy.utils import parse_debcontrol
+from monomoy.utils import parse_debcontrol, JSONEncoder
 
 if len(sys.argv) < 3:
     print "Give me a file!"
     sys.exit(1)
 
-print json.dumps(parse_debcontrol(sys.argv[2]), indent=4, sort_keys=True)
+print json.dumps(parse_debcontrol(sys.argv[2]),
+                 indent=4,
+                 sort_keys=True,
+                 cls=JSONEncoder)

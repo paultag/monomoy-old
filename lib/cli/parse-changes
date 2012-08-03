@@ -2,13 +2,16 @@
 # Copyright (c) Paul Tagliamonte <paultag@debian.org> under the terms and
 # conditions of the Expat license.
 
-import json
 import sys
+import json
 
-from monomoy.utils import parse_changes
+from monomoy.utils import parse_changes, JSONEncoder
 
 if len(sys.argv) < 3:
     print "Give me a file!"
     sys.exit(1)
 
-print json.dumps(parse_changes(sys.argv[2]), indent=4, sort_keys=True)
+print json.dumps(parse_changes(sys.argv[2]),
+                 indent=4,
+                 sort_keys=True,
+                 cls=JSONEncoder)
