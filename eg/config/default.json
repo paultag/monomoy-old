@@ -1,0 +1,20 @@
+{
+    "build-for": [
+        [
+            "gcc",
+            "clang"
+        ],
+        [
+            "x86",
+            "x86_64"
+        ],
+        [
+            "precise",
+            "unstable"
+        ]
+    ],
+    "incoming": "/home/tag/incoming",
+    "pool": "/home/tag/pool",
+    "build_expired_time": 7200,
+    "builder_timeout": 3600
+}
