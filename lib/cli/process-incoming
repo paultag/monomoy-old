@@ -4,4 +4,14 @@
 
 from monomoy.incoming import process_incoming
 
-process_incoming("/home/tag/incoming", "/home/tag/pool")
+import sys
+import json
+if len(sys.argv) < 3:
+    print "Need the JSON settings file"
+    sys.exit(1)
+obj = json.load(open(sys.argv[2], 'r'))
+
+incoming = obj['incoming']
+pool = obj['pool']
+
+process_incoming(incoming, pool)
