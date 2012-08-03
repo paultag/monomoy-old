@@ -4,4 +4,4 @@
 
 from monomoy.queue import garbage_collect
 
-garbage_collect(200, 200)
+garbage_collect(7200, 3600)
