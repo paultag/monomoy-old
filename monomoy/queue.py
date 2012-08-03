@@ -55,6 +55,15 @@ def take_job(unique_id):
     return job
 
 
+def close_job(unique_id):
+    job = db.jobs.find_one({"_id": unique_id})
+    if job is None:
+        return { "err": "no such job" }
+
+    db.jobs.remove({"_id": job['_id']}, safe=True)
+    return { "ok": "job done" }
+
+
 def garbage_collect(how_old, builder_timeout):
     for job in db.jobs.find({"builder" : {"$ne" : None}}).sort("entered", 1):
         # Let's make sure the update is below the threshold
@@ -79,3 +88,4 @@ def garbage_collect(how_old, builder_timeout):
                 print " -> builder %s alive. Skipping." % (builder['_id'])
         else:
             print "Pending job: %s" % (job['_id'])
+    print "GC routine done."
