@@ -5,11 +5,9 @@
             "clang"
         ],
         [
-            "x86",
-            "x86_64"
+            "x86"
         ],
         [
-            "precise",
             "unstable",
             "testing"
         ]

@@ -1,8 +1,8 @@
 # Copyright (c) Paul Tagliamonte <paultag@debian.org> under the terms and
 # conditions of the Expat license.
 
-from monomoy.utils import iter_dir_xtn, parse_changes, parse_debcontrol, \
-        combine_array
+from monomoy.utils import (iter_dir_xtn, parse_changes,
+                           parse_debcontrol, combine_array)
 
 from monomoy.db import db
 from monomoy.queue import new_job

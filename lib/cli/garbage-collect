@@ -2,10 +2,10 @@
 # Copyright (c) Paul Tagliamonte <paultag@debian.org> under the terms and
 # conditions of the Expat license.
 
-from monomoy.queue import garbage_collect
-
 import sys
 import json
+from monomoy.queue import garbage_collect
+
 if len(sys.argv) < 3:
     print "Need the JSON settings file"
     sys.exit(1)
