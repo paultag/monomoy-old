@@ -9,12 +9,12 @@ from bson.objectid import ObjectId
 
 
 def combine_array(obj):
-    if obj == []:
-        yield obj  # base-case
-        return
+    if obj == []:  # base-case
+        yield obj
+        return     # if we're back in control, we're done. return.
 
-    for choice in combine_array(obj[1:]):
-        for my in obj[0]:
+    for choice in combine_array(obj[1:]):  # slice & recurse
+        for my in obj[0]:  # for each of our options
             yield choice + [my]  # append to the yielded array and append
 
     # dear christ this is black magic. This is what I get for having
@@ -22,6 +22,7 @@ def combine_array(obj):
     # recursively yields all combos back.
     #
     # Screw best practice, eh?
+
 
 def parse_debcontrol(fil):
     payload = {}
