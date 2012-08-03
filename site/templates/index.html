@@ -1,0 +1,12 @@
+ {% extends "base.html" %}
+
+{% block title %}Hello, World{% endblock %}
+{% block main %}
+<h1>Registered files</h1>
+
+{% for change in changes %}
+    {{ change.source }}<br />
+
+    <pre>{{ change.changes }}</pre>
+{% endfor %}
+{% endblock %}

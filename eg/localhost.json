@@ -1,0 +1,9 @@
+{
+    "_id": "localhost",
+    "capabilities": [
+        "debian",
+        "unstable",
+        "x86_64",
+        "gcc"
+    ]
+}
