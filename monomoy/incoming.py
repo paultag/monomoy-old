@@ -1,8 +1,12 @@
 # Copyright (c) Paul Tagliamonte <paultag@debian.org> under the terms and
 # conditions of the Expat license.
 
-from monomoy.utils import iter_dir_xtn, parse_changes, parse_debcontrol
+from monomoy.utils import iter_dir_xtn, parse_changes, parse_debcontrol, \
+        combine_array
+
 from monomoy.db import db
+from monomoy.queue import new_job
+
 import os
 
 
@@ -24,7 +28,7 @@ def reject(incoming_path, changes, fd):
     os.unlink(fd)
 
 
-def process_incoming(incoming_path, pool_path):
+def process_incoming(incoming_path, pool_path, settings):
     for fd in iter_dir_xtn(incoming_path, "changes"):
         changes = parse_changes(fd)
 
@@ -61,3 +65,6 @@ def process_incoming(incoming_path, pool_path):
             os.rename(path, "%s/%s" % (pool_folder, fil['file']))
 
         os.unlink(fd)
+
+        for thing in combine_array(settings['build-for']):
+            print new_job(str(key), thing)

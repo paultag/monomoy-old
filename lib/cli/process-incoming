@@ -14,4 +14,4 @@ obj = json.load(open(sys.argv[2], 'r'))
 incoming = obj['incoming']
 pool = obj['pool']
 
-process_incoming(incoming, pool)
+process_incoming(incoming, pool, obj)
