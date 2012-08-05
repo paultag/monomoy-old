@@ -2,22 +2,13 @@
 # conditions of the Expat license.
 
 from monomoy.utils import (iter_dir_xtn, parse_changes,
-                           parse_debcontrol, combine_array)
+                           parse_debcontrol, combine_array,
+                           get_path)
 
-from monomoy.db import db
 from monomoy.queue import new_job
+from monomoy.db import db
 
 import os
-
-
-def get_path(pool, eyedee):
-    return "%s/%s/%s/%s/%s" % (
-        pool,
-        eyedee[0],
-        eyedee[1],
-        eyedee[2],
-        eyedee
-    )
 
 
 def reject(incoming_path, changes, fd):

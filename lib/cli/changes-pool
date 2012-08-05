@@ -5,7 +5,7 @@
 import sys
 import json
 
-from monomoy.incoming import get_path
+from monomoy.utils import get_path
 
 if len(sys.argv) < 3:
     print "Need ID"

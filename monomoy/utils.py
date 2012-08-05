@@ -8,6 +8,16 @@ import datetime
 from bson.objectid import ObjectId
 
 
+def get_path(pool, eyedee):
+    return "%s/%s/%s/%s/%s" % (
+        pool,
+        eyedee[0],
+        eyedee[1],
+        eyedee[2],
+        eyedee
+    )
+
+
 def combine_array(obj):
     if obj == []:  # base-case
         yield obj

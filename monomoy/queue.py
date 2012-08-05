@@ -2,16 +2,27 @@
 # conditions of the Expat license.
 
 from monomoy.builder import get_builder
+from monomoy.utils import get_path
 from monomoy.db import db
 import datetime as dt
 
+from bson.objectid import ObjectId
+
 
 def new_job(upload_id, requirements):
+    changes = db.changes.find_one({"_id": ObjectId(upload_id)})
+    dsc = "%s_%s.dsc" % (
+        changes['source'],
+        changes['version']
+    )
+
     return db.jobs.insert({
         "build": upload_id,
         "requirements": requirements,
         "entered": dt.datetime.now(),
-        "builder": None
+        "builder": None,
+        "pool": get_path("", upload_id),
+        "dsc": "%s/%s" % (get_path("", upload_id), dsc)
     },
     safe=True)
 
