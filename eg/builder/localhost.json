@@ -3,7 +3,9 @@
     "capabilities": [
         "debian",
         "unstable",
+        "testing",
         "x86_64",
-        "gcc"
+        "gcc",
+        "clang"
     ]
 }
