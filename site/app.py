@@ -10,10 +10,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    objs = db.changes.find({
+    jobs = db.jobs.find({
     })
     return render_template('index.html', **{
-        "changes": objs
+        "jobs": jobs
     })
 
 @app.route("/about")

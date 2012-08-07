@@ -2,11 +2,12 @@
 
 {% block title %}Hello, World{% endblock %}
 {% block main %}
-<h1>Registered files</h1>
+<h1>Pending Jobs</h1>
 
-{% for change in changes %}
-    {{ change.source }}<br />
-
-    <pre>{{ change.changes }}</pre>
+{% for job in jobs %}
+    {{job.build}}
+    {% for req in job.requirements %}
+        {{req}}
+    {% endfor %}<br />
 {% endfor %}
 {% endblock %}
