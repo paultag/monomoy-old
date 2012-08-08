@@ -39,9 +39,6 @@ def simple_mail(subject, body):
 def jinja_mail(subject, template, context):
     env = Environment(loader=FileSystemLoader('/usr/lib/monomoy/templates'))
     template = env.get_template(template)
-    print template.render(**context)
-    return
-
     with mail(subject, []) as path:
         with open(path, 'w') as fd:
             fd.write(template.render(**context))
