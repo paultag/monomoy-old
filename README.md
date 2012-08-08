@@ -19,7 +19,7 @@ Monomy uses mongodb as the backend, for reasons I won't get into here.
 license
 -------
 
-Monomoy is licensed under the widly used Expat license (which is one of the
+Monomoy is licensed under the widely used Expat license (which is one of the
 many MIT family licenses)
 
 I humbly request you be awesome and do awesome things.
