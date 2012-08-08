@@ -51,7 +51,11 @@ def next_job(unique_id):
 def take_job(unique_id):
     job = next_job(unique_id)
     if job is None:
-        return {"err": "no new jobs"}
+        return None, None
+
+    builder = db.builders.find_one({"_id": unique_id})
+    if builder is None:
+        return None, None
 
     job['builder'] = {
         "name": unique_id,
@@ -63,16 +67,16 @@ def take_job(unique_id):
                     False,  # Upsert
                     safe=True)
 
-    return job
+    return builder, job
 
 
 def close_job(unique_id):
     job = db.jobs.find_one({"_id": unique_id})
     if job is None:
-        return {"err": "no such job"}
+        return None
 
     db.jobs.remove({"_id": job['_id']}, safe=True)
-    return {"ok": "job done"}
+    return job
 
 
 def garbage_collect(how_old, builder_timeout):

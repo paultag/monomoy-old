@@ -1,0 +1,6 @@
+{% extends "base.mail" %}
+
+{% block content %}
+Job: {{job}}
+Builder: {{builder}}
+{% endblock %}

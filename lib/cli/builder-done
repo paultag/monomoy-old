@@ -7,7 +7,7 @@ import json
 from bson.objectid import ObjectId
 from monomoy.queue import close_job
 from monomoy.utils import JSONEncoder
-from monomoy.mail import simple_mail
+from monomoy.mail import jinja_mail
 
 if len(sys.argv) < 3:
     print "Need ID"
@@ -15,8 +15,9 @@ if len(sys.argv) < 3:
 
 obj = close_job(ObjectId(sys.argv[2]))
 
-simple_mail("Job finished", """
-Some random build finished.
-""")
+if obj is not None:
+    jinja_mail("Job Finished", "builder-done.mail", {
+        "job": obj
+    })
 
 print json.dumps(obj, cls=JSONEncoder)
