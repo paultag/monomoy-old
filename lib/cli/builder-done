@@ -7,9 +7,16 @@ import json
 from bson.objectid import ObjectId
 from monomoy.queue import close_job
 from monomoy.utils import JSONEncoder
+from monomoy.mail import simple_mail
 
 if len(sys.argv) < 3:
     print "Need ID"
     sys.exit(1)
 
-print json.dumps(close_job(ObjectId(sys.argv[2])), cls=JSONEncoder)
+obj = close_job(ObjectId(sys.argv[2]))
+
+simple_mail("Job finished", """
+Some random build finished.
+""")
+
+print json.dumps(obj, cls=JSONEncoder)
