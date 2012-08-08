@@ -1,6 +1,8 @@
 # Copyright (c) Paul Tagliamonte <paultag@debian.org> under the terms and
 # conditions of the Expat license.
 
+from jinja2 import Environment, FileSystemLoader
+
 from contextlib import contextmanager
 from pbs import mailx, cat
 import tempfile
@@ -32,3 +34,14 @@ def simple_mail(subject, body):
     with mail(subject, []) as path:
         with open(path, 'w') as fd:
             fd.write(body)
+
+
+def jinja_mail(subject, template, context):
+    env = Environment(loader=FileSystemLoader('/usr/lib/monomoy/templates'))
+    template = env.get_template(template)
+    print template.render(**context)
+    return
+
+    with mail(subject, []) as path:
+        with open(path, 'w') as fd:
+            fd.write(template.render(**context))

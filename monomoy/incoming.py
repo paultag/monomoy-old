@@ -29,10 +29,8 @@ def process_incoming(incoming_path, pool_path, settings):
         if changes['architecture'] != ["source"]:
             # Reject.
             reject(incoming_path, changes, fd)
-            rejected.append(changes['source'])
+            rejected.append(changes)
             continue
-
-        accepted.append(changes['source'])
 
         key = db.changes.insert(changes, safe=True)
 
@@ -63,7 +61,13 @@ def process_incoming(incoming_path, pool_path, settings):
 
         os.unlink(fd)
 
+        changes['builds'] = []
+
         for thing in combine_array(settings['build-for']):
-            print new_job(str(key), thing)
+            job = new_job(str(key), thing)
+            jobj = db.jobs.find_one({"_id": job})
+            changes['builds'].append(jobj)
+
+        accepted.append(changes)
 
     return (accepted, rejected)

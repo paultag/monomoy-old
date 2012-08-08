@@ -1,0 +1,5 @@
+Greetings,
+{% block content %}
+{% endblock %}
+Fondly,
+  - Monomoy Daemon
