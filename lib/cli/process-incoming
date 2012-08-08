@@ -23,4 +23,6 @@ for package in accepted:
     })
 
 for package in rejected:
-    simple_mail("Rejected: %s" % (package), "See title :)")
+    jinja_mail("Rejected: %s" % (package), "rejected.mail", {
+        "package": package
+    })
