@@ -3,6 +3,7 @@
 # conditions of the Expat license.
 
 from monomoy.incoming import process_incoming
+from monomoy.mail import simple_mail
 
 import sys
 import json
@@ -14,4 +15,10 @@ obj = json.load(open(sys.argv[2], 'r'))
 incoming = obj['incoming']
 pool = obj['pool']
 
-process_incoming(incoming, pool, obj)
+accepted, rejected = process_incoming(incoming, pool, obj)
+
+for package in accepted:
+    simple_mail("Accepted: %s" % (package), "See title :)")
+
+for package in rejected:
+    simple_mail("Rejected: %s" % (package), "See title :)")

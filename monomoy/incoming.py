@@ -20,13 +20,19 @@ def reject(incoming_path, changes, fd):
 
 
 def process_incoming(incoming_path, pool_path, settings):
+    accepted = []
+    rejected = []
+
     for fd in iter_dir_xtn(incoming_path, "changes"):
         changes = parse_changes(fd)
 
         if changes['architecture'] != ["source"]:
             # Reject.
             reject(incoming_path, changes, fd)
+            rejected.append(changes['source'])
             continue
+
+        accepted.append(changes['source'])
 
         key = db.changes.insert(changes, safe=True)
 
@@ -59,3 +65,5 @@ def process_incoming(incoming_path, pool_path, settings):
 
         for thing in combine_array(settings['build-for']):
             print new_job(str(key), thing)
+
+    return (accepted, rejected)
