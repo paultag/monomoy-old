@@ -8,17 +8,17 @@ from setuptools import setup
 long_description = open('README.md').read()
 
 setup(
-    name       = __appname__,
-    version    = __version__,
-    packages   = [ 'monomoy' ],
+    name=__appname__,
+    version=__version__,
+    packages=['monomoy'],
 
-    author       = "Paul Tagliamonte",
-    author_email = "paultag@debian.org",
+    author="Paul Tagliamonte",
+    author_email="paultag@debian.org",
 
-    long_description = long_description,
-    description      = 'Debian stuff',
-    license          = "Expat",
-    url              = "http://pault.ag",
+    long_description=long_description,
+    description='Debian stuff',
+    license="Expat",
+    url="http://pault.ag",
 
-    platforms        = ['any']
+    platforms=['any']
 )
