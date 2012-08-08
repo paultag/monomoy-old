@@ -6,10 +6,13 @@ import sys
 import json
 from monomoy.queue import take_job
 from monomoy.utils import JSONEncoder
+from monomoy.mail import simple_mail
 
 if len(sys.argv) < 3:
     print "Need ID"
     sys.exit(1)
+
+simple_mail("Builder took a build.", """Some builder took a build.""")
 
 print json.dumps(take_job(sys.argv[2]),
                  cls=JSONEncoder)
