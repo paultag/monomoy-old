@@ -19,7 +19,7 @@ data = json.load(open(sys.argv[2], 'r'))
 
 try:
     ret = add_builder(**data)
-    obj = db.builders.find_one({ "_id": ret })
+    obj = db.builders.find_one({"_id": ret})
     print json.dumps({
         "success": obj
     }, cls=JSONEncoder)

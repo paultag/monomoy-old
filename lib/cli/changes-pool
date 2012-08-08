@@ -3,7 +3,6 @@
 # conditions of the Expat license.
 
 import sys
-import json
 
 from monomoy.utils import get_path
 
