@@ -9,7 +9,7 @@ from monomoy.builder import add_builder
 from monomoy.utils import JSONEncoder
 from pymongo.errors import DuplicateKeyError
 from monomoy.db import db
-
+from monomoy.mail import simple_mail
 
 if len(sys.argv) < 3:
     print "Need a JSON dump"
@@ -23,6 +23,12 @@ try:
     print json.dumps({
         "success": obj
     }, cls=JSONEncoder)
+    simple_mail("Builder Added (%s)" % (ret),
+"""
+A new builder has been added to the buildd network.
+""")
+
+
 except DuplicateKeyError:
     print json.dumps({
         "error": "builder is already in the db"

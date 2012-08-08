@@ -23,7 +23,7 @@ def mail(subject, attachments):
     fd, path = tempfile.mkstemp()
     yield path
 
-    mailx(cat(path), "-s", subject, str(SERVER_ADMIN))
+    mailx(cat(path), "-s", str(subject), str(SERVER_ADMIN))
     os.remove(path)
 
 
