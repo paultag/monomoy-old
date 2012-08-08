@@ -51,17 +51,17 @@ def next_job(unique_id):
 def take_job(unique_id):
     job = next_job(unique_id)
     if job is None:
-        return { "err": "no new jobs" }
+        return {"err": "no new jobs"}
 
     job['builder'] = {
         "name": unique_id,
         "when": dt.datetime.now()
     }
 
-    up = db.jobs.update({"_id": job['_id']},
-                        job,
-                        False,  #Upsert
-                        safe=True)
+    db.jobs.update({"_id": job['_id']},
+                    job,
+                    False,  # Upsert
+                    safe=True)
 
     return job
 
@@ -69,14 +69,14 @@ def take_job(unique_id):
 def close_job(unique_id):
     job = db.jobs.find_one({"_id": unique_id})
     if job is None:
-        return { "err": "no such job" }
+        return {"err": "no such job"}
 
     db.jobs.remove({"_id": job['_id']}, safe=True)
-    return { "ok": "job done" }
+    return {"ok": "job done"}
 
 
 def garbage_collect(how_old, builder_timeout):
-    for job in db.jobs.find({"builder" : {"$ne" : None}}).sort("entered", 1):
+    for job in db.jobs.find({"builder": {"$ne": None}}).sort("entered", 1):
         # Let's make sure the update is below the threshold
         if job['builder']['when'] < (
             dt.datetime.now() - dt.timedelta(seconds=how_old)
@@ -88,8 +88,8 @@ def garbage_collect(how_old, builder_timeout):
             ):
                 print " -> builder timeout."
                 db.jobs.update({"_id": job['_id']},
-                               { "$unset" : {
-                                   'builder' : 1
+                               {"$unset": {
+                                   'builder': 1
                                }},
                                False,  # upsert
                                False,  # multi
