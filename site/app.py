@@ -10,17 +10,17 @@ app = Flask(__name__)
 
 
 @app.route("/")
+def about():
+    return render_template('about.html', **{})
+
+
+@app.route("/jobs")
 def index():
     jobs = db.jobs.find({
     })
-    return render_template('index.html', **{
+    return render_template('jobs.html', **{
         "jobs": jobs
     })
-
-
-@app.route("/about")
-def about():
-    return render_template('about.html', **{})
 
 
 if __name__ == "__main__":
