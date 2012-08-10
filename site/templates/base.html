@@ -1,41 +1,54 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/dewebstrap.css') }}"/>
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}Hello, World{% endblock %}</title>
+        <link rel="stylesheet" href = "{{ url_for('static', filename='css/debuild.css') }}" ></link>
     </head>
     <body>
-        <div class = 'heading' >
-            <div class = 'pad content' >
-                <div class = 'logo' >
-                    <img
-                        id = 'logo'
-                        src = '{{ url_for('static', filename='imgs/debian-white.svg') }}'
-                        alt = '' />
-                </div>
-                <div class = 'slug' >
-{% include 'slug.html' %}
-                </div>
-                <div class = 'nav' >
-                    <ul>
-                        <li><a href = '/' >Home</a></li>
-                        <li><a href = '/about' >About</a></li>
-{% block nav %}
-{% endblock %}
-                    </ul>
-                </div>
+        <div class = 'content' >
+            <div class = 'header' >
+                <div class = 'color color-r' ></div>
+                <div class = 'color color-s' ></div>
+                <div class = 'color color-o' ></div>
+                <div class = 'color color-y' ></div>
+                <div class = 'color color-g' ></div>
+                <div class = 'color color-b' ></div>
+                <div class = 'color color-i' ></div>
+                <div class = 'color color-v' ></div>
                 <div class = 'clear' ></div>
             </div>
-        </div>
-        <div class = 'content' >
-            <div class = 'main pad' >
+            <div class = 'container' ><div class = 'shim' >
 {% block main %}
 {% endblock %}
-            </div>
+            </div></div>
         </div>
-        <div class = 'content' >
-            <footer>
-{% include 'footer.html' %}
-            </footer>
+        <div class = 'footer' >
+            <div class = 'container' ><div class = 'shim' >
+                <div class = 'fifth' >
+                    <img src = '{{ url_for('static', filename='imgs/logo.svg') }}' alt = '' />
+                </div>
+                <div class = 'fifth' >
+                    <h1>Source Code</h1>
+                    <ul>
+                        <li>
+                            <a href = 'https://github.com/paultag/monomoy' >Monomoy</a>
+                        </li>
+                        <li>
+                            <a href = 'https://github.com/paultag/atlantic' >Atlantic</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class = 'fifth' >
+                    <h1>:</h1>
+                </div>
+                <div class = 'fifth' >
+                    <h1>About</h1>
+                </div>
+                <div class = 'fifth' >
+                    <h1>Help</h1>
+                </div>
+                <div class = 'clear' ></div>
+            </div></div>
         </div>
     </body>
 </html>
