@@ -7,7 +7,7 @@
 {% for job in jobs %}
     {{job.build}}
     {% for req in job.requirements %}
-        {{req}}
+        <span class = 'tag tag-info' >{{req}}</span>
     {% endfor %}<br />
 {% endfor %}
 {% endblock %}

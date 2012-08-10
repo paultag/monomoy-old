@@ -4,9 +4,14 @@
 
 from flask import Flask, render_template
 from monomoy.db import db
+import humanize
 
 
 app = Flask(__name__)
+
+@app.template_filter('humanize')
+def _filter_humanize(date):
+    return humanize.naturaltime(date)
 
 
 @app.route("/")
@@ -20,6 +25,15 @@ def index():
     })
     return render_template('jobs.html', **{
         "jobs": jobs
+    })
+
+
+@app.route("/builders")
+def builders():
+    builders = db.builders.find({
+    })
+    return render_template('builders.html', **{
+        "builders": builders
     })
 
 

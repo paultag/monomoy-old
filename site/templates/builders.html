@@ -1,0 +1,14 @@
+ {% extends "base.html" %}
+
+{% block title %}Builders{% endblock %}
+{% block main %}
+<h1>Package Builders</h1>
+
+{% for builder in builders %}
+    {{builder._id}}
+    {{ builder.lastping | humanize }}
+    {% for cap in builder.capabilities %}
+        <span class = 'tag tag-info' >{{cap}}</span>
+    {% endfor %}
+{% endfor %}
+{% endblock %}
