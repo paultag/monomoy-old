@@ -47,7 +47,7 @@ def builders():
 @app.route("/build/<buildid>")
 def build(buildid=None):
     builds = db.builds.find({"build": buildid})
-    jobs = db.builds.find({"build": buildid})
+    jobs = db.jobs.find({"build": buildid})
 
     return render_template('build.html', **{
         "builds": builds,
