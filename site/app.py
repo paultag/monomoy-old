@@ -21,17 +21,23 @@ def about():
 
 @app.route("/jobs")
 def index():
-    jobs = db.jobs.find({
-    })
+    jobs = db.jobs.find({})
     return render_template('jobs.html', **{
         "jobs": jobs
     })
 
 
+@app.route("/builds")
+def builds():
+    changes = db.changes.find({})
+    return render_template('builds.html', **{
+        "changes": changes
+    })
+
+
 @app.route("/builders")
 def builders():
-    builders = db.builders.find({
-    })
+    builders = db.builders.find({})
     return render_template('builders.html', **{
         "builders": builders
     })
