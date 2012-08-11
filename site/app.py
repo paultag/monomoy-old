@@ -28,10 +28,10 @@ def index():
     })
 
 
-@app.route("/builds")
-def builds():
+@app.route("/uploads")
+def uploads():
     changes = db.changes.find({}).sort("accepted_date", -1)
-    return render_template('builds.html', **{
+    return render_template('uploads.html', **{
         "changes": changes
     })
 

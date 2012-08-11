@@ -2,6 +2,7 @@
 
 {% block title %}Hello, World{% endblock %}
 {% block main %}
+<h1>Uploads</h1>
 {% for change in changes %}
     <a href = '/upload/{{change._id}}' >{{change.source}}/{{change.version}}</a>
     ({{change.accepted_date | humanize}})<br />
