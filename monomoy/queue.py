@@ -75,6 +75,8 @@ def close_job(unique_id):
     if job is None:
         return None
 
+    job['finished'] = dt.datetime.now()
+
     db.builds.insert(job)
     db.jobs.remove({"_id": job['_id']}, safe=True)
     return job

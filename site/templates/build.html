@@ -2,4 +2,18 @@
 
 {% block title %}Hello, World{% endblock %}
 {% block main %}
+<h1>Job</h1>
+<a href = '/upload/{{build.build}}' >{{build.build}}</a>
+{% for req in build.requirements %}
+    <span class = 'tag tag-info' >{{req}}</span>
+{% endfor %}
+<br />
+{% if build.builder != None %}
+<h1>buildd</h1>
+    <a href = '/builder/{{build.builder.name}}' >{{build.builder.name}}</a>
+{% endif %}
+<br />
+{% if build.finished %}
+    Build finished at {{build.finished | humanize}}
+{% endif %}
 {% endblock %}

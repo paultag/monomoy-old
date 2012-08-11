@@ -5,7 +5,7 @@
 <h1>Package Builders</h1>
 
 {% for builder in builders %}
-    {{builder._id}}
+    <a href = '/builder/{{builder._id}}' >{{builder._id}}</a>
     {{ builder.lastping | humanize }}
     {% for cap in builder.capabilities %}
         <span class = 'tag tag-info' >{{cap}}</span>

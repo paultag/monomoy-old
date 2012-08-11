@@ -46,9 +46,9 @@ def builders():
 
 @app.route("/build/<buildid>")
 def build(buildid=None):
-    build = db.jobs.find({"_id": ObjectId(buildid)})
+    build = db.jobs.find_one({"_id": ObjectId(buildid)})
     if build is None:
-        build = db.builds.find({"_id": ObjectId(buildid)})
+        build = db.builds.find_one({"_id": ObjectId(buildid)})
 
     return render_template('build.html', **{
         "build": build
