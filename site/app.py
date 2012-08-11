@@ -30,7 +30,7 @@ def index():
 
 @app.route("/builds")
 def builds():
-    changes = db.changes.find({})
+    changes = db.changes.find({}).sort("accepted_date", -1)
     return render_template('builds.html', **{
         "changes": changes
     })
@@ -46,8 +46,8 @@ def builders():
 
 @app.route("/build/<buildid>")
 def build(buildid=None):
-    builds = db.builds.find({"build": buildid})
-    jobs = db.jobs.find({"build": buildid})
+    builds = list(db.builds.find({"build": buildid}))
+    jobs = list(db.jobs.find({"build": buildid}))
 
     return render_template('build.html', **{
         "builds": builds,

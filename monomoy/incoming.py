@@ -8,6 +8,8 @@ from monomoy.utils import (iter_dir_xtn, parse_changes,
 from monomoy.queue import new_job
 from monomoy.db import db
 
+import datetime as dt
+
 import os
 
 
@@ -31,6 +33,8 @@ def process_incoming(incoming_path, pool_path, settings):
             reject(incoming_path, changes, fd)
             rejected.append(changes)
             continue
+
+        changes['accepted_date'] = dt.datetime.now()
 
         key = db.changes.insert(changes, safe=True)
 

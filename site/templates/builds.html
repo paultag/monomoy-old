@@ -3,6 +3,7 @@
 {% block title %}Hello, World{% endblock %}
 {% block main %}
 {% for change in changes %}
-    <a href = '/build/{{change._id}}' >{{change.source}}/{{change.version}}</a></br />
+    <a href = '/build/{{change._id}}' >{{change.source}}/{{change.version}}</a>
+    ({{change.accepted_date | humanize}})<br />
 {% endfor %}
 {% endblock %}
