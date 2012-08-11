@@ -6,6 +6,7 @@ from flask import Flask, render_template
 from monomoy.db import db
 import humanize
 
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -40,6 +41,17 @@ def builders():
     builders = db.builders.find({})
     return render_template('builders.html', **{
         "builders": builders
+    })
+
+
+@app.route("/build/<buildid>")
+def build(buildid=None):
+    builds = db.builds.find({"build": buildid})
+    jobs = db.builds.find({"build": buildid})
+
+    return render_template('build.html', **{
+        "builds": builds,
+        "jobs": jobs
     })
 
 

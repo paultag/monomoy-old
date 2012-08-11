@@ -1,0 +1,13 @@
+ {% extends "base.html" %}
+
+{% block title %}Hello, World{% endblock %}
+{% block main %}
+<h1>Pending Jobs</h1>
+{% for job in jobs %}
+    {{job}}
+{% endfor %}
+<h1>Finished Jobs</h1>
+{% for build in builds %}
+    {{build}}
+{% endfor %}
+{% endblock %}
