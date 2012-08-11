@@ -2,22 +2,4 @@
 
 {% block title %}Hello, World{% endblock %}
 {% block main %}
-<h1>Running jobs</h1>
-{% for build in jobs %}
-    {% if build.builder != None %}
-        {{build._id}} {% for req in build.requirements %}<span class = 'tag tag-info' >{{req}}</span>{% endfor %} - {{build.builder.name}}<br />
-    {% endif %}
-{% endfor %}
-
-<h1>Pending Jobs</h1>
-{% for build in jobs %}
-    {% if build.builder == None %}
-        {{build._id}} {% for req in build.requirements %}<span class = 'tag tag-info' >{{req}}</span>{% endfor %}<br />
-    {% endif %}
-{% endfor %}
-
-<h1>Finished Jobs</h1>
-{% for build in builds %}
-    {{build._id}} {% for req in build.requirements %}<span class = 'tag tag-info' >{{req}}</span>{% endfor %}<br />
-{% endfor %}
 {% endblock %}

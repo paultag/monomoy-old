@@ -46,10 +46,35 @@ def builders():
 
 @app.route("/build/<buildid>")
 def build(buildid=None):
+    build = db.jobs.find({"_id": ObjectId(buildid)})
+    if build is None:
+        build = db.builds.find({"_id": ObjectId(buildid)})
+
+    return render_template('build.html', **{
+        "build": build
+    })
+
+@app.route("/builder/<builderid>")
+def builder(builderid=None):
+
+    builder = db.builders.find_one({"_id": builderid})
+
+    inprog = db.jobs.find({"builder.name": builderid})
+    done = db.builds.find({"builder.name": builderid})
+
+    return render_template('builder.html', **{
+        "in_prog": inprog,
+        "finished": done,
+        "builder": builder
+    })
+
+
+@app.route("/upload/<buildid>")
+def upload(buildid=None):
     builds = list(db.builds.find({"build": buildid}))
     jobs = list(db.jobs.find({"build": buildid}))
 
-    return render_template('build.html', **{
+    return render_template('upload.html', **{
         "builds": builds,
         "jobs": jobs
     })
