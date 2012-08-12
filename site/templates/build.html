@@ -2,7 +2,7 @@
 
 {% block title %}Hello, World{% endblock %}
 {% block main %}
-<h1>Job</h1>
+<h1>{{changes.source}}/{{changes.version}}</h1>
 <a href = '/upload/{{build.build}}' >{{build.build}}</a>
 {% for req in build.requirements %}
     <span class = 'tag tag-info' >{{req}}</span>
@@ -15,6 +15,10 @@
 <br />
 {% if build.finished %}
     Build finished at {{build.finished | humanize}}
+{% else %}
+    {% if build.builder != None %}
+        Build started {{build.builder.when | humanize}}
+    {% endif %}
 {% endif %}
 
 {% if build.report %}

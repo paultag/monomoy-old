@@ -50,8 +50,11 @@ def build(buildid=None):
     if build is None:
         build = db.builds.find_one({"_id": ObjectId(buildid)})
 
+    changes = db.changes.find_one({"_id": ObjectId(build['build'])})
+
     return render_template('build.html', **{
-        "build": build
+        "build": build,
+        "changes": changes
     })
 
 @app.route("/builder/<builderid>")
