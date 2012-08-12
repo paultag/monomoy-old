@@ -16,4 +16,13 @@
 {% if build.finished %}
     Build finished at {{build.finished | humanize}}
 {% endif %}
+
+{% if build.report %}
+{% for report in build.report %}
+    <h3>{{report}}</h3>
+    {% for entry in build.report[report] %}
+    {{entry}}<br />
+    {% endfor %}
+{% endfor %}
+{% endif %}
 {% endblock %}
