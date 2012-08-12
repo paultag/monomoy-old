@@ -25,7 +25,7 @@ Upload: <a href = '/upload/{{build.build}}' >{{build.build}}</a>
 {% for report in build.report %}
     <h3>{{report}}</h3>
     {% for entry in build.report[report] %}
-    {{entry}}<br />
+        <div class = 'report-entry' >{{entry}}</div>
     {% endfor %}
 {% endfor %}
 {% endif %}

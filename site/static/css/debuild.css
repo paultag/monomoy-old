@@ -116,6 +116,18 @@ a {
     clear:                      both;
 }
 
+.report-entry {
+    background-color:          #FCFCFC;
+    margin-top:                5px;
+    margin-bottom:             5px;
+    padding:                   5px;
+    border:                    1px solid #BCBCBC;
+    -moz-border-radius:        5px;
+    -webkit-border-radius:     5px;
+    -o-border-radius:          5px;
+    border-radius:             5px;
+}
+
 span.tag {
     -moz-border-radius:        5px;
     -webkit-border-radius:     5px;
