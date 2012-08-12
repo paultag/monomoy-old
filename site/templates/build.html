@@ -3,7 +3,7 @@
 {% block title %}Hello, World{% endblock %}
 {% block main %}
 <h1>{{changes.source}}/{{changes.version}}</h1>
-<a href = '/upload/{{build.build}}' >{{build.build}}</a>
+Upload: <a href = '/upload/{{build.build}}' >{{build.build}}</a>
 {% for req in build.requirements %}
     <span class = 'tag tag-info' >{{req}}</span>
 {% endfor %}
