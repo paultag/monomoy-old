@@ -18,11 +18,17 @@ pool = obj['pool']
 accepted, rejected = process_incoming(incoming, pool, obj)
 
 for package in accepted:
-    jinja_mail("Accepted: %s" % (package), "accepted.mail", {
+    jinja_mail("Accepted: %s/%s" % (
+        package['source'],
+        package['version']
+    ), "accepted.mail", {
         "package": package
     })
 
 for package in rejected:
-    jinja_mail("Rejected: %s" % (package), "rejected.mail", {
+    jinja_mail("Rejected: %s/%s" % (
+        package['source'],
+        package['version']
+    ), "rejected.mail", {
         "package": package
     })

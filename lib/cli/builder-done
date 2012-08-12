@@ -15,9 +15,10 @@ if len(sys.argv) < 3:
 
 obj = close_job(ObjectId(sys.argv[2]))
 
-if obj is not None:
-    jinja_mail("Job Finished", "builder-done.mail", {
-        "job": obj
-    })
+# XXX: Re-enable me later on
+#if obj is not None:
+#    jinja_mail("Job Finished", "builder-done.mail", {
+#        "job": obj
+#    })
 
 print json.dumps(obj, cls=JSONEncoder)

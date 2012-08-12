@@ -25,6 +25,7 @@ a {
     margin-left:                auto;
     margin-right:               auto;
     width:                      700px;
+    padding-bottom:             100px;
 }
 
 .shim {

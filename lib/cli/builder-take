@@ -14,10 +14,11 @@ if len(sys.argv) < 3:
 
 builder, job = take_job(sys.argv[2])
 
-if builder is not None and job is not None:
-    jinja_mail("Builder took a build.", "builder-take.mail", {
-        "builder": builder,
-        "job": job
-    })
+# XXX: Re-enable me later on
+# if builder is not None and job is not None:
+#     jinja_mail("Builder took a build.", "builder-take.mail", {
+#         "builder": builder,
+#         "job": job
+#     })
 
 print json.dumps(job, cls=JSONEncoder)
