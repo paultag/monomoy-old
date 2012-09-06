@@ -1,11 +1,7 @@
 {
     "_id": "localhost",
     "capabilities": [
-        "debian",
         "unstable",
-        "testing",
-        "x86_64",
-        "gcc",
-        "clang"
+        "64bit"
     ]
 }

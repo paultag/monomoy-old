@@ -14,7 +14,7 @@ Upload: <a href = '/upload/{{build.build}}' >{{build.build}}</a>
 {% endif %}
 <br />
 {% if build.finished %}
-    Build finished at {{build.finished | humanize}}
+    Build finished {{build.finished | humanize}}
 {% else %}
     {% if build.builder != None %}
         Build started {{build.builder.when | humanize}}
