@@ -1,7 +1,0 @@
-{% extends "base.mail" %}
-
-{% block content %}
-Job finished.
-
-{{job}}
-{% endblock %}

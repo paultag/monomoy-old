@@ -1,9 +1,0 @@
-{% extends "base.mail" %}
-
-{% block content %}
-{{ package.source }} has been rejected from the build farm.
-
-The package needs to be a source-only, and well-formated upload. I don't
-have much more debugging information for you right now, perhaps consider
-patching monomoy to be more helpful :)
-{% endblock %}
